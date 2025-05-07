@@ -12,7 +12,7 @@ hourly_df = hourly_df[["time", "high", "low", "open", "close", "volumefrom", "vo
 # Establish a connection with our database and
 # Create a "Cursor" which is an object to be able to interact with the database 
 # N.B: Note that the database has already been created
-connection = sqlite3.connect("../database/crypto_etl.db")
+connection = sqlite3.connect("../database/crypto.db")
 cursor = connection.cursor()
 
 for _, row in hourly_df.iterrows():
