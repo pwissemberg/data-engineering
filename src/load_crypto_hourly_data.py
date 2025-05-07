@@ -12,7 +12,7 @@ hourly_df = hourly_df[["time", "high", "low", "open", "close", "volumefrom", "vo
 # Establish a connection with our database and
 # Create a "Cursor" which is an object to be able to interact with the database 
 # N.B: Note that the database has already been created
-connection = sqlite3.connect("../database/crypto_db.sqlite")
+connection = sqlite3.connect("../database/crypto_etl.db")
 cursor = connection.cursor()
 
 for _, row in hourly_df.iterrows():
@@ -26,7 +26,7 @@ for _, row in hourly_df.iterrows():
     volumeto = row["volumeto"]
 
     cursor.execute("""
-                   INSERT INTO crypto_hourly (time, high, low, open, close, volume_from, volume_to) VALUES(?, ?, ?, ?, ?, ?, ?)
+                   INSERT INTO crypto_hourly_etl (time, high, low, open, close, volume_from, volume_to) VALUES(?, ?, ?, ?, ?, ?, ?)
                    """,
                    (time, high, low, open, close, volume_from, volumeto)
                 )
