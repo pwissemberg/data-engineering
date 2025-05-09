@@ -1,4 +1,4 @@
---CREATE OR REPLACE TABLE crypto_yearly AS (
+CREATE TABLE crypto_yearly AS (
 
     WITH yearly_raw AS (
 
