@@ -33,14 +33,14 @@ CREATE TABLE crypto_yearly AS (
             SUM(volume_from) OVER (PARTITION BY calendar_year) AS volume_from,
             SUM(volume_to) OVER (PARTITION BY calendar_year) AS volume_to
 
-        FROM monthly_raw
+        FROM yearly_raw
         GROUP BY time, date, calendar_year, high, low, open, close, volume_from, volume_to
 
     ),
 
 
 
-    monthly_final AS (
+    yearly_final AS (
 
         SELECT
 
