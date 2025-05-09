@@ -1,4 +1,4 @@
-CREATE TABLE daily_kpis AS (
+CREATE TABLE weekly_kpis AS (
 
 
 
@@ -6,7 +6,9 @@ CREATE TABLE daily_kpis AS (
 
         SELECT
             
-            time,
+            date,
+            calendar_year,
+            calendar_week,
 
             CASE
                 WHEN volume_from != 0 THEN ROUND((volume_to / volume_from)::NUMERIC, 2)
@@ -37,7 +39,7 @@ CREATE TABLE daily_kpis AS (
                 WHEN low != 0 THEN ROUND((100 * (high - low) / low)::NUMERIC, 2)
             END AS low_price_spread_pct
 
-        FROM crypto_hourly_etl
+        FROM crypto_weekly
 
     ),
 
@@ -46,7 +48,9 @@ CREATE TABLE daily_kpis AS (
 
         SELECT
 
-            time,
+            date,
+            calendar_year,
+            calendar_week,
 
             close > open AS is_green_candle,
 
@@ -60,7 +64,7 @@ CREATE TABLE daily_kpis AS (
                 ELSE FALSE
             END AS is_doji_like
 
-        FROM crypto_hourly_etl
+        FROM crypto_weekly
 
     )
 
@@ -68,7 +72,9 @@ CREATE TABLE daily_kpis AS (
 
     SELECT     
         
-        p.time,
+        p.date,
+        p.calendar_year,
+        p.calendar_week,
         p.volume_weighted_avg_price,
         p.variation,
         p.variation_pct,
@@ -82,9 +88,9 @@ CREATE TABLE daily_kpis AS (
     FROM price_kpis AS p
 
     LEFT JOIN market_kpis AS m
-        ON p.time = m.time
+        ON p.date = m.date
 
-    ORDER BY p.time ASC
+    ORDER BY p.date ASC
 
 
 
