@@ -28,8 +28,8 @@ CREATE TABLE crypto_daily AS (
             MIN(low) OVER (PARTITION BY date) AS low,
             FIRST_VALUE(open) OVER(PARTITION BY date ORDER BY hour ASC) AS open,
             FIRST_VALUE(close) OVER(PARTITION BY date ORDER BY hour DESC) AS close,
-            SUM(volume_from) OVER (PARTITION BY date) AS daily_volume_from,
-            SUM(volume_to) OVER (PARTITION BY date) AS daily_volume_to
+            SUM(volume_from) OVER (PARTITION BY date) AS volume_from,
+            SUM(volume_to) OVER (PARTITION BY date) AS volume_to
 
         FROM daily_raw
         GROUP BY date, hour, high, low, open, close, volume_from, volume_to
@@ -47,8 +47,8 @@ CREATE TABLE crypto_daily AS (
             low,
             open,
             close,
-            daily_volume_from,
-            daily_volume_to
+            volume_from,
+            volume_to
 
         FROM daily_processed
 
