@@ -91,7 +91,7 @@ CREATE TABLE daily_kpis AS (
         p.open_price_spread_pct,
         p.low_price_spread_pct,
         p.moving_avg,
-        m.is_price_above_avg
+        m.is_price_above_avg,
         p.volatility,
         p.z_score,
         p.rolling_max_high,
