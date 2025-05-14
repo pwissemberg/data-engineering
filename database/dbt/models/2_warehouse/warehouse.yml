@@ -1,0 +1,142 @@
+version: 2
+models:
+  - name: fct_crypto_daily
+    tags: ["daily"]
+    columns:
+      - name: date
+        description: Calendar date
+        tests:
+          - unique
+      - name: high
+        description: Crypto highest value reached during the day
+        tests:
+          - not_null
+      - name: low
+        description: Crypto lowest value reached during the day
+        tests:
+          - not_null
+      - name: open
+        description: Cryptocurrency value at the beginning of the day
+        tests:
+          - not_null
+      - name: close
+        description: Cryptocurrency value at the end of the day
+        tests:
+          - not_null
+      - name: volume_from
+        description: Amount of coins exchanged during the day in cryptocurrency (e.g BTC, ETH)
+        tests:
+          - not_null
+      - name: volume_to
+        description: Corresponding value of coins exchanged during the day in local currency (e.g EUR, USD)
+        tests:
+          - not_null
+  - name: fct_crypto_weekly
+    tags: ["weekly"]
+    columns:
+      - name: date
+        description: Calendar date corresponding to the first day of the week
+        tests:
+          - unique
+      - name: calendar_year
+        tests:
+          - not_null
+      - name: calendar_week
+        description: Week number in the year
+        tests:
+          - not_null
+      - name: high
+        description: Crypto highest value reached during the week
+        tests:
+          - not_null
+      - name: low
+        description: Crypto lowest value reached during the week
+        tests:
+          - not_null
+      - name: open
+        description: Cryptocurrency value at the beginning of the week
+        tests:
+          - not_null
+      - name: close
+        description: Cryptocurrency value at the end of the week
+        tests:
+          - not_null
+      - name: volume_from
+        description: Amount of coins exchanged during the week in cryptocurrency (e.g BTC, ETH)
+        tests:
+          - not_null
+      - name: volume_to
+        description: Corresponding value of coins exchanged during the week in local currency (e.g EUR, USD)
+        tests:
+          - not_null
+  - name: fct_crypto_monthly
+    tags: ["monthly"] 
+    columns:
+      - name: date
+        description: Calendar date corresponding to the first day of the month
+        tests:
+          - unique
+      - name: calendar_year
+        tests:
+          - not_null
+      - name: calendar_month
+        tests:
+          - not_null
+      - name: high
+        description: Crypto highest value reached during the month
+        tests:
+          - not_null
+      - name: low
+        description: Crypto lowest value reached during the month
+        tests:
+          - not_null
+      - name: open
+        description: Cryptocurrency value at the beginning of the month
+        tests:
+          - not_null
+      - name: close
+        description: Cryptocurrency value at the end of the month
+        tests:
+          - not_null
+      - name: volume_from
+        description: Amount of coins exchanged during the month in cryptocurrency (e.g BTC, ETH)
+        tests:
+          - not_null
+      - name: volume_to
+        description: Corresponding value of coins exchanged during the month in local currency (e.g EUR, USD)
+        tests:
+          - not_null
+  - name: fct_crypto_yearly
+    tags: ["yearly"]
+    columns:
+      - name: date
+        description: Calendar date corresponding to the first day of the year
+        tests:
+          - unique
+      - name: calendar_year
+        tests:
+          - not_null
+      - name: high
+        description: Crypto highest value reached during the year
+        tests:
+          - not_null
+      - name: low
+        description: Crypto lowest value reached during the year
+        tests:
+          - not_null
+      - name: open
+        description: Cryptocurrency value at the beginning of the year
+        tests:
+          - not_null
+      - name: close
+        description: Cryptocurrency value at the end of the year
+        tests:
+          - not_null
+      - name: volume_from
+        description: Amount of coins exchanged during the year in cryptocurrency (e.g BTC, ETH)
+        tests:
+          - not_null
+      - name: volume_to
+        description: Corresponding value of coins exchanged during the year in local currency (e.g EUR, USD)
+        tests:
+          - not_null

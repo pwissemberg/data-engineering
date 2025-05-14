@@ -1,0 +1,34 @@
+version: 2
+models:
+  - name: fct_crypto_hourly
+    tags: ["hourly"]
+    columns:
+      - name: time
+        description: Calendar date and hour
+        tests:
+          - unique
+          - not_null
+      - name: high
+        description: Cryptocurrency highest value reached during the hour
+        tests:
+          - not_null
+      - name: low
+        description: Cryptocurrency lowest value reached during the hour
+        tests:
+          - not_null
+      - name: open
+        description: ""
+        tests:
+          - not_null
+      - name: close
+        description: ""
+        tests:
+          - not_null
+      - name: volume_from
+        description: Volume of crypto exchanged during the hour
+        tests:
+          - not_null
+      - name: volume_to
+        description: Volume of crypto exchanged during the hour in local currency (i.e EUR, USD)
+        tests:
+          - not_null
