@@ -1,8 +1,8 @@
-WITH hourly_raw AS (
+WITH hourly_processed AS (
 
     SELECT
         
-        time,
+        TO_TIMESTAMP(time) AS time,
         high,
         low,
         open,
@@ -12,23 +12,9 @@ WITH hourly_raw AS (
 
     FROM {{ source('crypto_api', 'crypto_hourly_elt') }}
 
-),
+    WHERE
 
-
-
-hourly_processed AS (
-
-    SELECT
-        
-        TO_TIMESTAMP(time) AS time,
-        high,
-        low,
-        open,
-        close,
-        volume_from,
-        volume_to
-
-    FROM hourly_raw
+        EXTRACT(year FROM TO_TIMESTAMP(time)) >= 2014
 
 ),
 
