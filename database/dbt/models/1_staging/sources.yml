@@ -1,7 +1,0 @@
-version: 2
-sources:
-  - name: crypto_api
-    database: dev
-    schema: public
-    tables:
-      - name: crypto_hourly_elt
