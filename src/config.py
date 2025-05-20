@@ -11,9 +11,11 @@ TIME_COLUMN = "time"
 # Database
 PG_USERNAME = "postgres"
 PG_PASSWORD = os.environ.get("PG_PASSWORD")
-DB_NAME = "dev"
+#DB_NAME = "dev"
+DB_NAME = "staging"
 DB_URI = f"postgresql+pg8000://{PG_USERNAME}:{PG_PASSWORD}@localhost:5432/{DB_NAME}" 
-DB_SCHEMA = "public"
+#DB_SCHEMA = "public"
+DB_SCHEMA = ["bronze", "silver", "gold"]
 TABLE_NAME = f"{CRYPTO_CURRENCY.lower()}_{LOCAL_CURRENCY.lower()}_hourly"
 ARCHIVE_FOLDER = "../data/"
 ARCHIVE_FILE = f"{CRYPTO_CURRENCY.lower()}_{LOCAL_CURRENCY.lower()}_hourly.csv"
